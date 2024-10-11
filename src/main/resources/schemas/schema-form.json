@@ -1,0 +1,104 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "additionalProperties": false,
+    "oneOf": [
+        {
+            "title": "NONE",
+            "properties": {
+                "conversion": {
+                    "const": "NONE"
+                }
+            }
+        },
+        {
+            "title": "JSON_TO_TOON",
+            "properties": {
+                "conversion": {
+                    "const": "JSON_TO_TOON"
+                },
+                "indent": {
+                    "title": "Indentation",
+                    "description": "Number of spaces for indentation",
+                    "type": "integer",
+                    "default": 2
+                },
+                "delimiter": {
+                    "title": "Delimiter",
+                    "description": "Delimiter for TOON format",
+                    "type": "string",
+                    "enum": ["COMMA", "TAB", "PIPE"],
+                    "default": "COMMA"
+                },
+                "lengthMarker": {
+                    "title": "Length Marker",
+                    "description": "Include length markers in TOON encoding",
+                    "type": "boolean",
+                    "default": false
+                },
+                "flatten": {
+                    "title": "Flattening",
+                    "description": "Key flattening strategy",
+                    "type": "string",
+                    "enum": ["SAFE", "OFF"],
+                    "default": "SAFE"
+                },
+                "flattenDepth": {
+                    "title": "Flatten Depth",
+                    "description": "Depth to flatten keys",
+                    "type": "integer",
+                    "default": 1
+                },
+                "prettyPrint": {
+                    "title": "Pretty Print JSON",
+                    "description": "Enable pretty printing for TOON to JSON conversion",
+                    "type": "boolean",
+                    "default": false
+                }
+            },
+            "required": ["indent", "delimiter"]
+        },
+        {
+            "title": "TOON_TO_JSON",
+            "properties": {
+                "conversion": {
+                    "const": "TOON_TO_JSON"
+                },
+                "indent": {
+                    "title": "Indentation",
+                    "description": "Number of spaces for indentation",
+                    "type": "integer",
+                    "default": 2
+                },
+                "delimiter": {
+                    "title": "Delimiter",
+                    "description": "Delimiter for TOON format",
+                    "type": "string",
+                    "enum": ["COMMA", "TAB", "PIPE"],
+                    "default": "COMMA"
+                },
+                "strict": {
+                    "title": "Strict Mode",
+                    "description": "Enable strict mode for TOON decoding",
+                    "type": "boolean",
+                    "default": true
+                },
+                "expandPaths": {
+                    "title": "Expand Paths",
+                    "description": "Path expansion strategy during decoding",
+                    "type": "string",
+                    "enum": ["SAFE", "OFF"],
+                    "default": "SAFE"
+                },
+                "prettyPrint": {
+                    "title": "Pretty Print JSON",
+                    "description": "Enable pretty printing for TOON to JSON conversion",
+                    "type": "boolean",
+                    "default": false
+                }
+            },
+            "required": ["indent", "delimiter"]
+        }
+    ],
+    "required": ["conversion"]
+}

@@ -1,0 +1,81 @@
+{
+    "id": "my-http-proxy-api",
+    "name": "my-http-proxy-api",
+    "gravitee": "4.0.0",
+    "type": "proxy",
+    "listeners": [
+        {
+            "type": "http",
+            "paths": [
+                {
+                    "path": "/http-proxy-api"
+                }
+            ],
+            "entrypoints": [
+                {
+                    "type": "http-proxy"
+                }
+            ]
+        }
+    ],
+    "endpointGroups": [
+        {
+            "name": "default-group",
+            "type": "http-proxy",
+            "endpoints": [
+                {
+                    "name": "default",
+                    "type": "http-proxy",
+                    "weight": 1,
+                    "inheritConfiguration": false,
+                    "configuration": {
+                        "target": "http://localhost:8080/endpoint"
+                    },
+                    "sharedConfigurationOverride": {
+                        "http": {
+                            "connectTimeout": 3000,
+                            "readTimeout": 60000
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "flows": [
+        {
+            "name": "flow-1",
+            "enabled": true,
+            "selectors": [
+                {
+                    "type": "http",
+                    "path": "/",
+                    "pathOperator": "START_WITH",
+                    "methods": ["POST"]
+                }
+            ],
+            "request": [
+                {
+                    "name": "Json to Toon",
+                    "enabled": true,
+                    "policy": "json-to-toon",
+                    "configuration": {
+                        "conversion": "JSON_TO_TOON"
+                    }
+                }
+            ],
+            "response": [
+                {
+                    "name": "Toon to Json",
+                    "enabled": true,
+                    "policy": "json-to-toon",
+                    "configuration": {
+                        "conversion": "TOON_TO_JSON"
+                    }
+                }
+            ]
+        }
+    ],
+    "analytics": {
+        "enabled": false
+    }
+}

@@ -1,0 +1,41 @@
+= Gravitee Debug Log Policy
+
+== Phases
+
+[cols="4*", options="header"]
+|===
+^|onRequest
+^|onResponse
+^|onMessageRequest
+^|onMessageResponse
+
+^.^| X
+^.^| X
+^.^| X
+^.^| X
+|===
+
+== Description
+
+This policy allows to log information into the gateway logs. Useful for debugging.
+
+
+== Configuration
+
+You can configure the policy with the following options:
+
+[cols="5*", options=header]
+|===
+^| Property
+^| Required
+^| Description
+^| Type
+^| Default
+
+.^|logLevel
+^.^|
+.^| The log level to use
+^.^|string
+^.^|"INFO"
+
+|===
