@@ -1,0 +1,74 @@
+{
+    "id": "my-message-api",
+    "name": "my-message-api",
+    "gravitee": "4.0.0",
+    "type": "message",
+    "listeners": [
+        {
+            "type": "http",
+            "paths": [
+                {
+                    "path": "/message-api"
+                }
+            ],
+            "entrypoints": [
+                {
+                    "type": "http-get",
+                    "configuration": {
+                        "messagesLimitCount": 2,
+                        "messagesLimitDurationMs": 500,
+                        "headersInPayload": true,
+                        "metadataInPayload": true
+                    }
+                }
+            ]
+        }
+    ],
+    "endpointGroups": [
+        {
+            "name": "default",
+            "type": "mock",
+            "endpoints": [
+                {
+                    "name": "default-endpoint",
+                    "type": "mock",
+                    "weight": 1,
+                    "inheritConfiguration": false,
+                    "configuration": {
+                        "messageInterval": 1,
+                        "messageContent": "{\n              \"user\": {\n                \"id\": 123,\n                \"name\": \"Ada\",\n                \"tags\": [\"reading\", \"gaming\"]\n              }\n            }",
+                        "messageCount": 2
+                    }
+                }
+            ]
+        }
+    ],
+    "flows": [
+        {
+            "name": "flow-1",
+            "enabled": true,
+            "selectors": [
+                {
+                    "type": "http",
+                    "path": "/",
+                    "pathOperator": "START_WITH",
+                    "methods": ["POST"]
+                }
+            ],
+            "publish": [],
+            "subscribe": [
+                {
+                    "name": "Toon to Json",
+                    "enabled": true,
+                    "policy": "json-to-toon",
+                    "configuration": {
+                        "conversion": "JSON_TO_TOON"
+                    }
+                }
+            ]
+        }
+    ],
+    "analytics": {
+        "enabled": false
+    }
+}

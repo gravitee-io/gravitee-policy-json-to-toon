@@ -12,7 +12,7 @@ import io.gravitee.gateway.api.buffer.Buffer;
 import io.gravitee.gateway.api.http.HttpHeaderNames;
 import io.gravitee.gateway.api.http.HttpHeaders;
 import io.gravitee.gateway.reactive.api.ExecutionFailure;
-import io.gravitee.gateway.reactive.api.context.MessageExecutionContext;
+import io.gravitee.gateway.reactive.api.context.http.HttpMessageExecutionContext;
 import io.gravitee.gateway.reactive.api.context.http.HttpPlainExecutionContext;
 import io.gravitee.gateway.reactive.api.message.Message;
 import io.gravitee.gateway.reactive.api.policy.http.HttpPolicy;
@@ -65,15 +65,15 @@ public class JsonToToonPolicy implements HttpPolicy {
             );
     }
 
-    public Completable onMessageRequest(MessageExecutionContext ctx) {
+    public Completable onMessageRequest(HttpMessageExecutionContext ctx) {
         return ctx.request().onMessage(message -> transformMessage(message, ctx));
     }
 
-    public Completable onMessageResponse(MessageExecutionContext ctx) {
+    public Completable onMessageResponse(HttpMessageExecutionContext ctx) {
         return ctx.response().onMessage(message -> transformMessage(message, ctx));
     }
 
-    private Maybe<Message> transformMessage(Message message, MessageExecutionContext ctx) {
+    private Maybe<Message> transformMessage(Message message, HttpMessageExecutionContext ctx) {
         if (message.content() == null) {
             return Maybe.just(message);
         }

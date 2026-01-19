@@ -26,7 +26,7 @@ import java.util.Map;
 import org.junit.jupiter.api.Test;
 
 @GatewayTest
-public class JsonToToonPolicyIntegrationTest extends AbstractPolicyTest<JsonToToonPolicy, JsonToToonPolicyConfiguration> {
+public class JsonToToonPolicyHttpProxyApiIntegrationTest extends AbstractPolicyTest<JsonToToonPolicy, JsonToToonPolicyConfiguration> {
 
     @Override
     public void configureEntrypoints(Map<String, EntrypointConnectorPlugin<?, ?>> entrypoints) {
