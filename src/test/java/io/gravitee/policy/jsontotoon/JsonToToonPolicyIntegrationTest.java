@@ -63,6 +63,7 @@ public class JsonToToonPolicyIntegrationTest extends AbstractPolicyTest<JsonToTo
             .flatMap(request -> request.rxSend(Buffer.buffer(json)))
             .flatMap(response -> {
                 assertThat(response.statusCode()).isEqualTo(HttpStatusCode.OK_200);
+                assertThat(response.headers().get("Content-Type")).isEqualTo("application/json");
                 return response.body();
             })
             .test()
@@ -73,7 +74,12 @@ public class JsonToToonPolicyIntegrationTest extends AbstractPolicyTest<JsonToTo
             })
             .assertNoErrors();
 
-        wiremock.verify(1, postRequestedFor(urlPathEqualTo("/endpoint")).withRequestBody(equalTo(toonWithPipe)));
+        wiremock.verify(
+            1,
+            postRequestedFor(urlPathEqualTo("/endpoint"))
+                .withRequestBody(equalTo(toonWithPipe))
+                .withHeader("Content-Type", equalTo("text/toon"))
+        );
     }
 
     @Test
@@ -89,6 +95,7 @@ public class JsonToToonPolicyIntegrationTest extends AbstractPolicyTest<JsonToTo
             .flatMap(request -> request.rxSend(Buffer.buffer(json)))
             .flatMap(response -> {
                 assertThat(response.statusCode()).isEqualTo(HttpStatusCode.OK_200);
+                assertThat(response.headers().get("Content-Type")).isEqualTo("application/json");
                 return response.body();
             })
             .test()

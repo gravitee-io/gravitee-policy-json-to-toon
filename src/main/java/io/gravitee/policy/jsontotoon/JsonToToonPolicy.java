@@ -23,6 +23,8 @@ import io.reactivex.rxjava3.core.Maybe;
 public class JsonToToonPolicy implements HttpPolicy {
 
     private static final ObjectMapper MAPPER = new ObjectMapper();
+    private static final String TEXT_TOON = "text/toon";
+    private static final String APPLICATION_JSON = "application/json";
     private final JsonToToonPolicyConfiguration configuration;
 
     public JsonToToonPolicy(JsonToToonPolicyConfiguration configuration) {
@@ -52,9 +54,7 @@ public class JsonToToonPolicy implements HttpPolicy {
                 }
                 return Maybe.empty();
             })
-            .doOnSuccess(buffer -> {
-                headers.set(HttpHeaderNames.CONTENT_LENGTH, Integer.toString(buffer.length()));
-            })
+            .doOnSuccess(buffer -> setContentHeaders(headers, buffer.length()))
             .onErrorResumeNext(ioe ->
                 ctx.interruptBodyWith(
                     new ExecutionFailure(HttpStatusCode.INTERNAL_SERVER_ERROR_500)
@@ -81,7 +81,9 @@ public class JsonToToonPolicy implements HttpPolicy {
         return Maybe.fromCallable(() -> {
             String content = message.content().toString();
             String transformedContent = convert(content);
-            return message.content(Buffer.buffer(transformedContent));
+            Buffer buffer = Buffer.buffer(transformedContent);
+            setContentHeaders(message.headers(), buffer.length());
+            return message.content(buffer);
         }).onErrorResumeNext(ioe ->
             ctx.interruptMessageWith(
                 new ExecutionFailure(HttpStatusCode.INTERNAL_SERVER_ERROR_500)
@@ -90,6 +92,15 @@ public class JsonToToonPolicy implements HttpPolicy {
                     .cause(ioe)
             )
         );
+    }
+
+    private void setContentHeaders(HttpHeaders headers, int contentLength) {
+        if (configuration.getConversion() == JsonToToonPolicyConfiguration.Conversion.JSON_TO_TOON) {
+            headers.set(HttpHeaderNames.CONTENT_TYPE, TEXT_TOON);
+        } else if (configuration.getConversion() == JsonToToonPolicyConfiguration.Conversion.TOON_TO_JSON) {
+            headers.set(HttpHeaderNames.CONTENT_TYPE, APPLICATION_JSON);
+        }
+        headers.set(HttpHeaderNames.CONTENT_LENGTH, Integer.toString(contentLength));
     }
 
     private String convert(String content) throws Exception {
