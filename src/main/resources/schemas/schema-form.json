@@ -48,12 +48,6 @@
                     "description": "Depth to flatten keys",
                     "type": "integer",
                     "default": 1
-                },
-                "prettyPrint": {
-                    "title": "Pretty Print JSON",
-                    "description": "Enable pretty printing for TOON to JSON conversion",
-                    "type": "boolean",
-                    "default": false
                 }
             },
             "required": ["indent", "delimiter"]

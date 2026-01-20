@@ -65,10 +65,12 @@ public class JsonToToonPolicy implements HttpPolicy {
             );
     }
 
+    @Override
     public Completable onMessageRequest(HttpMessageExecutionContext ctx) {
         return ctx.request().onMessage(message -> transformMessage(message, ctx));
     }
 
+    @Override
     public Completable onMessageResponse(HttpMessageExecutionContext ctx) {
         return ctx.response().onMessage(message -> transformMessage(message, ctx));
     }
@@ -109,18 +111,18 @@ public class JsonToToonPolicy implements HttpPolicy {
         if (conversion == JsonToToonPolicyConfiguration.Conversion.JSON_TO_TOON) {
             EncodeOptions options = new EncodeOptions(
                 configuration.getIndent(),
-                Delimiter.valueOf(configuration.getDelimiter()),
+                configuration.getDelimiter(),
                 configuration.isLengthMarker(),
-                KeyFolding.valueOf(configuration.getFlatten()),
+                configuration.getFlatten(),
                 configuration.getFlattenDepth()
             );
             return JToon.encodeJson(content, options);
         } else if (conversion == JsonToToonPolicyConfiguration.Conversion.TOON_TO_JSON) {
             DecodeOptions options = new DecodeOptions(
                 configuration.getIndent(),
-                Delimiter.valueOf(configuration.getDelimiter()),
+                configuration.getDelimiter(),
                 configuration.isStrict(),
-                PathExpansion.valueOf(configuration.getExpandPaths())
+                configuration.getExpandPaths()
             );
             Object decoded = JToon.decode(content, options);
             if (configuration.isPrettyPrint()) {
