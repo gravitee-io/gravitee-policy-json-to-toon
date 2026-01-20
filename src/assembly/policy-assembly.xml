@@ -41,10 +41,10 @@
         <fileSet>
             <directory>${basedir}</directory>
             <includes>
-                <include>README.adoc</include>
-                <include>README_kafka.adoc</include>
+                <include>docs/</include>
+                <include>README.md</include>
             </includes>
-            <outputDirectory>docs</outputDirectory>
+            <outputDirectory>./</outputDirectory>
         </fileSet>
 
         <fileSet>
