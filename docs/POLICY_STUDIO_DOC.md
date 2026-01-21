@@ -14,9 +14,8 @@ This policy is particularly useful when you need to interface with systems that 
 
 
 ## Usage
-The `json-to-toon` policy provides a powerful and flexible way to convert data between JSON and TOON formats. Below are the configuration details for both conversion directions.
+The `json-to-toon` policy provides a powerful and flexible way to convert data between JSON and TOON formats. Below are examples of how to configure the policy.
 
-Here add you use cases for `json-to-toon` policy.
 ### JSON to TOON Conversion
 
 When converting from JSON to TOON, you can customize the output format using the following options:
@@ -27,7 +26,7 @@ When converting from JSON to TOON, you can customize the output format using the
 {
   "conversion": "JSON_TO_TOON",
   "indent": 2,
-  "delimiter": "SPACE",
+  "delimiter": "COMMA",
   "flatten": "NONE"
 }
 ```
@@ -40,7 +39,7 @@ When converting from TOON to JSON, you can control how the data is parsed and fo
 {
   "conversion": "TOON_TO_JSON",
   "strict": true,
-  "expandPaths": "ALL",
+  "expandPaths": "OFF",
   "prettyPrint": true
 }
 ```
