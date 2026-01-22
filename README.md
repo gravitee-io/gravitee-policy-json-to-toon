@@ -78,6 +78,8 @@ The `json-to-toon` policy can be applied to the following API types and flow pha
 
 * Request
 * Response
+* Publish
+* Subscribe
 
 ## Compatibility matrix
 Strikethrough text indicates that a version is deprecated.
