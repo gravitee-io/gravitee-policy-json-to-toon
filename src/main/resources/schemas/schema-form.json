@@ -1,7 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
-    "additionalProperties": false,
     "oneOf": [
         {
             "title": "NONE",
@@ -9,7 +8,8 @@
                 "conversion": {
                     "const": "NONE"
                 }
-            }
+            },
+            "additionalProperties": false
         },
         {
             "title": "JSON_TO_TOON",
@@ -50,7 +50,8 @@
                     "default": 1
                 }
             },
-            "required": ["indent", "delimiter"]
+            "required": ["indent", "delimiter"],
+            "additionalProperties": false
         },
         {
             "title": "TOON_TO_JSON",
@@ -91,7 +92,8 @@
                     "default": false
                 }
             },
-            "required": ["indent", "delimiter"]
+            "required": ["indent", "delimiter"],
+            "additionalProperties": false
         }
     ],
     "required": ["conversion"]
