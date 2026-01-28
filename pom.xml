@@ -42,13 +42,9 @@
 
         <!-- Policy Dependencies -->
         <jtoon.version>1.0.8</jtoon.version>
-        <jackson-databind.version>3.0.3</jackson-databind.version>
 
         <!-- Maven plugins -->
         <maven-plugin-properties.version>1.2.1</maven-plugin-properties.version>
-
-        <!-- Test -->
-        <testcontainers.version>1.20.2</testcontainers.version>
 
         <!-- Property used by the publication job in CI-->
         <publish-folder-path>graviteeio-apim/plugins/policies</publish-folder-path>
@@ -86,12 +82,6 @@
             <groupId>dev.toonformat</groupId>
             <artifactId>jtoon</artifactId>
             <version>${jtoon.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>tools.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson-databind.version}</version>
         </dependency>
 
         <!-- Logging -->
