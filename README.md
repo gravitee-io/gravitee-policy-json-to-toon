@@ -131,6 +131,13 @@ Strikethrough text indicates that a version is deprecated.
 
 ## Changelog
 
+#### [1.0.1](https://github.com/gravitee-io/gravitee-policy-json-to-toon/compare/1.0.0...1.0.1) (2026-02-02)
+
+
+##### Bug Fixes
+
+* add Apache License 2.0 to LICENSE.txt ([e02a7fa](https://github.com/gravitee-io/gravitee-policy-json-to-toon/commit/e02a7faf83c94efb534ef96faade97e98a802c56))
+
 ### 1.0.0 (2026-01-28)
 
 
