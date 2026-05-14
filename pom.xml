@@ -42,6 +42,7 @@
 
         <!-- Policy Dependencies -->
         <jtoon.version>1.0.8</jtoon.version>
+        <jackson.version>3.1.1</jackson.version>
 
         <!-- Maven plugins -->
         <maven-plugin-properties.version>1.3.0</maven-plugin-properties.version>
@@ -59,6 +60,10 @@
                 <version>${gravitee-apim.version}</version>
                 <scope>import</scope>
                 <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -82,6 +87,35 @@
             <groupId>dev.toonformat</groupId>
             <artifactId>jtoon</artifactId>
             <version>${jtoon.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>tools.jackson.core</groupId>
+                    <artifactId>jackson-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>tools.jackson.core</groupId>
+                    <artifactId>jackson-databind</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>tools.jackson.module</groupId>
+                    <artifactId>jackson-module-afterburner</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>tools.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>tools.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>tools.jackson.module</groupId>
+            <artifactId>jackson-module-afterburner</artifactId>
+            <version>${jackson.version}</version>
         </dependency>
 
         <!-- Logging -->
