@@ -131,6 +131,13 @@ Strikethrough text indicates that a version is deprecated.
 
 ## Changelog
 
+### [1.0.0-alpha.4](https://github.com/gravitee-io/gravitee-policy-json-to-toon/compare/1.0.0-alpha.3...1.0.0-alpha.4) (2026-05-14)
+
+
+##### Bug Fixes
+
+* **deps:** Excluding jackson-core deps to fix security vulnerabilities ([defaa7f](https://github.com/gravitee-io/gravitee-policy-json-to-toon/commit/defaa7f0003e267b9df768b1dd538402b7b13174))
+
 ### [1.0.0-alpha.3](https://github.com/gravitee-io/gravitee-policy-json-to-toon/compare/1.0.0-alpha.2...1.0.0-alpha.3) (2026-03-02)
 
 
