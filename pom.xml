@@ -82,6 +82,18 @@
             <groupId>dev.toonformat</groupId>
             <artifactId>jtoon</artifactId>
             <version>${jtoon.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>tools.jackson.core</groupId>
+                    <artifactId>jackson-core</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>tools.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>3.1.1</version>
         </dependency>
 
         <!-- Logging -->
