@@ -131,6 +131,13 @@ Strikethrough text indicates that a version is deprecated.
 
 ## Changelog
 
+#### [1.0.2](https://github.com/gravitee-io/gravitee-policy-json-to-toon/compare/1.0.1...1.0.2) (2026-05-21)
+
+
+##### Bug Fixes
+
+* **deps:** Excluding jackson-core deps to fix security vulnerabilities ([37d6d8c](https://github.com/gravitee-io/gravitee-policy-json-to-toon/commit/37d6d8cc139df95aea18717338956a36af8ad792))
+
 #### [1.0.1](https://github.com/gravitee-io/gravitee-policy-json-to-toon/compare/1.0.0...1.0.1) (2026-02-02)
 
 
