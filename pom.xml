@@ -36,7 +36,7 @@
 
     <properties>
         <!-- Gravitee dependencies for APIM -->
-        <gravitee-apim.version>4.11.9</gravitee-apim.version>
+        <gravitee-apim.version>4.11.10</gravitee-apim.version>
         <gravitee-reactor-message.version>9.0.1</gravitee-reactor-message.version>
         <gravitee-entrypoint-http-get.version>2.1.0</gravitee-entrypoint-http-get.version>
 
