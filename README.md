@@ -84,9 +84,9 @@ The `json-to-toon` policy can be applied to the following API types and flow pha
 ## Compatibility matrix
 Strikethrough text indicates that a version is deprecated.
 
-| Plugin version| APIM |
-| --- | ---  |
-|1.x|4.10.x and above |
+| Plugin version| APIM| Java version |
+| --- | --- | ---  |
+|1.x|4.10.x to latest|21 |
 
 
 ## Configuration options
